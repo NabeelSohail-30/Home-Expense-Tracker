@@ -96,15 +96,14 @@
                 Session("SLoggedDT") = Now()
 
                 'Creating Cookie
-                'if request.form("RememberMe")="1" then
-                '    response.cookies("CookieUserName")=RSLogin("UserEmail")
-                '    response.cookies("CookieUserName").Expires=#7-Jan-2021#
-                'else
-                    'response.cookies("CookieUserName")=""
-                    'response.cookies("CookieUserName").Expires=Now()
-                'end if 
-                response.write("Hello")
-    response.end
+                if request.form("RememberMe")="1" then
+                    response.cookies("CookieUserName")=RSLogin("UserEmail")
+                    response.cookies("CookieUserName").Expires=#7-Jan-2021#
+                else
+                    response.cookies("CookieUserName")=""
+                    response.cookies("CookieUserName").Expires=Now()
+                end if 
+                
                 response.Redirect("Menu.asp")
             end if
         end if
