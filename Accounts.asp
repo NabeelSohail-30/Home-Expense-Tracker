@@ -13,17 +13,19 @@
         <!--#include file="ValidateLogin.asp"-->
     <!--End-->
 <%
-    'Dim Conn 
-    Dim RSAccount
-    'Dim CS
+    'Database and RS Start 
+        'Dim Conn 
+        Dim RSAccount
+        'Dim CS
 
-    'Set Conn = Server.CreateObject("ADODB.Connection")
-    Set RSAccount = Server.CreateObject("ADODB.RecordSet")
-    
-    'CS = "Driver={SQL Server};Server=NABEELS-WORK;Database=HomeExpenseTracker;User Id=homeexpense;Password=Nabeel30;"
-    'Conn.Open CS
+        'Set Conn = Server.CreateObject("ADODB.Connection")
+        Set RSAccount = Server.CreateObject("ADODB.RecordSet")
+        
+        'CS = "Driver={SQL Server};Server=NABEELS-WORK;Database=HomeExpenseTracker;User Id=homeexpense;Password=Nabeel30;"
+        'Conn.Open CS
 
-    RSAccount.Open "SELECT * FROM AccountsTable",Conn
+        RSAccount.Open "SELECT * FROM AccountsTable",Conn
+    'Database and RS end
 %>
 <!DOCTYPE html>
 <html lang="en">
