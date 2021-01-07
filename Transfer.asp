@@ -46,8 +46,9 @@ end if
                                 do while Not RSAccounts.EOF
                       
                             %>
-                                <option value="<% response.write(RSAccounts("TableName")) %>"><% response.write(RSAccounts("TableDescription")) %></option>
-                            <%
+                                <option value="<% response.write(RSAccounts("TableName")) %>">
+                                    <% response.write(RSAccounts("TableDescription")) %></option>
+                                <%
             
                                 RSAccounts.MoveNext
                                 Loop
@@ -69,8 +70,9 @@ end if
                                 do while Not RSAccounts.EOF
                       
                             %>
-                                <option value="<% response.write(RSAccounts("TableName")) %>"><% response.write(RSAccounts("TableDescription")) %></option>
-                            <%
+                                <option value="<% response.write(RSAccounts("TableName")) %>">
+                                    <% response.write(RSAccounts("TableDescription")) %></option>
+                                <%
             
                                 RSAccounts.MoveNext
                                 Loop
