@@ -74,6 +74,7 @@
                         <li><a href="Menu.asp">Main Menu</a></li>
                         <li><a href="ViewTransaction.asp">Transactions</a></li>
                         <li><a href="AddAccount.asp">Accounts</a></li>
+                        <li><a href="Transfer.asp">Transfer</a></li>
                         <li><a href="Categories.asp">Categories</a></li>
                         <li><a href="Persons.asp">Persons</a></li>
                         <li><a href="#">User Management</a></li>
