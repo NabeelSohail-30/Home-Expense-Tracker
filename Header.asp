@@ -31,7 +31,7 @@
         <div class="row align-content-center" style="height:40px;">
             <div class="col-7 align-self-center text-left">
                 <h5>
-                    Welcome <% response.write(Session("StxtUserName") & " (" & Session("STxtUserEmail") & ")") %>
+                    Welcome <% response.write(Session("StxtUserName") & " (" & Session("STxtUserEmail") & ") - Active Users " & Application("visitors") ) %>
                 </h5>
             </div>
             <div class="col-5 align-self-center text-right">
