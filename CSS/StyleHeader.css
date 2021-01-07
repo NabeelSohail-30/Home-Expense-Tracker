@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: lightslategray;
+}
+
+.header {
+    color: whitesmoke;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+/*-----------Navigation Bar ----------*/
+.NavBar ul {
+    background-color: darkgrey;
+    height: 100%;
+    width: 100%;
+
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.NavBar li {
+    display: inline-block;
+}
+
+.NavBar a {
+    color: black;
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 25px;
+    font-weight: 600;
+}
+
+.NavBar a:hover {
+    background-color: floralwhite;
+    border-radius: 8px;
+    text-decoration: none;
+}

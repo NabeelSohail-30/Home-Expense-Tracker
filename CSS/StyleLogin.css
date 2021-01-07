@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color:lightslategray;
+    font-size: 14px;
+}
+
+.wrapper .header {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    margin: 50px auto;
+}
+
+.wrapper .header .top {
+    background-color: #e3e3e3;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    padding: 40px 40px 20px;
+}
+
+.wrapper .header .top .logo img {
+    display: block;
+    margin: 0 auto 35px;
+}
+
+.logo img {
+    width: 175px;
+}
+
+.wrapper .header form .input_field {
+    margin-bottom: 15px;
+}
+
+.wrapper .header form .input_field .input {
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #efefef;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #262626;
+    padding: 10px;
+}
+
+.wrapper .header form .input_field .input:focus {
+    border: 1px solid #b2b2b2;
+}
+
+.wrapper .header form .btn {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper .header form .btn .login_btn {
+    margin: 10px 0;
+    background: rgba(0, 39, 255, 0.86);
+    border: 1px solid rgba(0, 39, 255, 0.86);
+    border-radius: 12px;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    display: block;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    font-size: small;
+}
