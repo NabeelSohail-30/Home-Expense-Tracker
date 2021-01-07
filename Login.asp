@@ -44,6 +44,12 @@
                     <div class="btn">
                         <input type="submit" value="Log In" class="login_btn">
                     </div>
+
+                    <div>
+                        <h5>
+                            <% response.write("Active Users - " & Application("visitors") ) %>
+                        </h5>
+                    </div>
                 </form>
             </div>
         </div>
