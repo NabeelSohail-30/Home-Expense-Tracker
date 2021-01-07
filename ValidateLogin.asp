@@ -95,6 +95,15 @@
                 Session("SIsAdmin") = RSLogin("IsAdmin")
                 Session("SLoggedDT") = Now()
 
+                'Application Object Start
+                    'if Application("ActiveUsers") = "" then
+                        'Application("ActiveUsers") = 1
+                    'else
+                        'Application("ActiveUsers") = Application("ActiveUsers") + 1
+                    'end if 
+                'Application Object end
+                
+
                 'Creating Cookie
                 if request.form("RememberMe")="1" then
                     response.cookies("CookieUserName")=RSLogin("UserEmail")
