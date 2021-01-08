@@ -14,22 +14,24 @@
     <!--End-->
 <%
     'Variables
-    Dim FromAcc
-    Dim ToAcc
-    Dim TransferDate
-    Dim TransferDesc
-    Dim TransferAmount
+        Dim FromAcc
+        Dim ToAcc
+        Dim TransferDate
+        Dim TransferDesc
+        Dim TransferAmount
 
-    Dim RSAccountFrom
-    Dim RSAccountTo
+        Dim RSAccountFrom
+        Dim RSAccountTo
+
+        Dim ErrorFound
     'End
 
     'Initializing
-    FromAcc = Request.Form("FormAccountFrom")
-    ToAcc = Request.Form("FormAccountTo")
-    TransferDate = Request.Form("TrDate")
-    TransferDesc = Request.Form("TrDesc")
-    TransferAmount = Request.Form("TransAmount")
+        FromAcc = Request.Form("FormAccountFrom")
+        ToAcc = Request.Form("FormAccountTo")
+        TransferDate = Request.Form("TrDate")
+        TransferDesc = Request.Form("TrDesc")
+        TransferAmount = Request.Form("TransAmount")
     'End
 
     'response.Write(FromAcc)
@@ -38,11 +40,58 @@
     'response.Write(TransferDesc)
     'response.Write(TransferAmount)
 
+    Session("ErrorFound")=""
+    Session("DateError")=
+
     'Opening Db Start
         Set Conn = Server.CreateObject("ADODB.Connection")
         CS = "Driver={SQL Server};Server=NABEELS-WORK;Database=HomeExpenseTracker;User Id=homeexpense;Password=Nabeel30;"
         Conn.Open CS
     'Opening Db End
+
+    'TableName Validation Start
+        If FromAcc = "" or ToAcc = "" Then
+            Session("ErrorTable")="Invalid Table Name! Blank Table Name Found"
+            ErrorFound=True
+        Else
+            Session("ErrorFound")=""
+        End If
+    'TableName Validation End
+    
+    'Date Validation Start
+        if TransferDate = "" then
+            Session("DateError")="Enter Transfer Date"
+            ErrorFound=true
+        end if
+
+        if TransDate <> "" then
+            If IsDate(TransferDate)=False Then
+                Session("DateError")="Input is not Date"
+                Call CloseConn()
+                response.Redirect("NewTransaction.asp?AccTableName=" & TableName)
+            Else
+                Session("DateError")=""
+            End If
+        End If
+    'Date Validation Ends
+    
+    'Currency Validation Starts
+            If TransferAmount = "" Then
+                Session("CreditError")="You Cannot Leave Transfer Amount NULL"
+                ErrorFound=true
+            ElseIf IsNumeric(TransferAmount) = False Then
+                Session("CreditError")="Character Found in Transfer Amount"
+                ErrorFound=true
+            ElseIf TransferAmount <= 0 Then
+                Session("CreditError")="Transfer Amount cannot be less than or equal to zero"
+                ErrorFound=true
+            End If
+    'Currency Validation Ends
+
+    if ErrorFound=true then
+        Call CloseConn()
+        response.Redirect("NewTransaction.asp?AccTableName=" & TableName)
+    end if
 
     'Inserting Rec in FromAccount
         Set RSAccountFrom = Server.CreateObject("ADODB.RecordSet")
