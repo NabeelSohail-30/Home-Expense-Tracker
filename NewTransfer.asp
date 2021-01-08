@@ -45,13 +45,13 @@
     'Opening Db End
 
     'Inserting Rec in FromAccount
-        Set RSTransaction = Server.CreateObject("ADODB.RecordSet")
-        RSTransaction.Open "SELECT  Top (1) Balance FROM " & FromAcc & " ORDER BY ID DESC",Conn
+        Set RSAccountFrom = Server.CreateObject("ADODB.RecordSet")
+        RSAccountFrom.Open "SELECT  Top (1) Balance FROM " & FromAcc & " ORDER BY ID DESC",Conn
 
         Dim LastBal
         Dim CurBal
 
-        LastBal = RSTransaction("Balance")
+        LastBal = RSAccountFrom("Balance")
         'response.Write("LastBal = " & Lastbal)
         'response.End
 
@@ -60,10 +60,41 @@
         QryStr = "INSERT INTO " & FromAcc & " (TransactionDate,CategoryID,PersonID,Description,Credit,Debit,Balance) Values ('" & TransferDate & "', 18 , 1" & ",'" & TransferDesc & "'," & _
                   TransferAmount & ", 0 ," & CurBal & ")"
 
-        response.Write qrystr
+        'response.Write qrystr
         'response.end
         
-        'Conn.Execute QryStr
+        Conn.Execute QryStr
     'End
+
+    'Inserting Rec in FromAccount
+        Set RSAccountTo = Server.CreateObject("ADODB.RecordSet")
+        RSAccountTo.Open "SELECT  Top (1) Balance FROM " & ToAcc & " ORDER BY ID DESC",Conn
+
+        'Dim LastBal
+        'Dim CurBal
+
+        LastBal = RSAccountTo("Balance")
+        'response.Write("LastBal = " & Lastbal)
+        'response.End
+
+        CurBal = (LastBal - 0) + TransferAmount
+
+        QryStr = "INSERT INTO " & ToAcc & " (TransactionDate,CategoryID,PersonID,Description,Credit,Debit,Balance) Values ('" & TransferDate & "', 18 , 1" & ",'" & TransferDesc & "', 0 , " & TransferAmount & ", " & CurBal & ")"
+
+        'response.Write qrystr
+        'response.end
+        
+        Conn.Execute QryStr
+    'End
+
+    'Closing RS
+        RSAccountTo.Close
+        Set RSAccountTo = Nothing
+
+        RSAccountFrom.Close
+        Set RSAccountFrom = Nothing
+    'End
+
+    response.Redirect("Transfer.asp")
 
 %>
