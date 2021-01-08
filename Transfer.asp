@@ -99,7 +99,7 @@ end if
 
                         <div class="form-group">
                             <label for="">Transfer Amount</label>
-                            <input type="text" class="form-control" name="CreditAmount">
+                            <input type="text" class="form-control" name="TransAmount">
                             <span
                                 style="color: red; font-size:medium;"><% response.Write(Session("CreditError")) %></span>
                         </div>
