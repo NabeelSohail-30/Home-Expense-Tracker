@@ -250,11 +250,17 @@
         Dim LastBal
         Dim CurBal
 
-        LastBal = RSTransaction("Balance")
-        'response.Write("LastBal = " & Lastbal)
-        'response.End
+        if RSTransaction.EOF = false then
+            LastBal = RSTransaction("Balance")
+            'response.Write("LastBal = " & Lastbal)
+            'response.End
 
-        CurBal = (LastBal - CrAmount) + DbAmount
+            CurBal = (LastBal - CrAmount) + DbAmount
+        Else
+            CurBal = DbAmount
+        end if
+
+       
     'Calculating Bal End
 
     'Inserting Rec Start
