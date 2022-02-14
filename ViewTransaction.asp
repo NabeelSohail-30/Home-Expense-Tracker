@@ -31,7 +31,7 @@
 
     
 
-    If Request.QueryString("QsPageNumber")="" then
+    If Request.QueryString("QsPageNumber")= "" then
         PageNumber = 1
         SkipRec=0
     else
@@ -94,7 +94,7 @@
         RSCount.Open "SELECT COUNT(ID) AS TotalRecords FROM " & TableName,conn
 
         TotalRec = RSCount("TotalRecords")
-        RecPerPage=15
+        RecPerPage=55
 
         If RSCount.EOF  or RSCount("TotalRecords")=1 then
             LastPage = 0
@@ -398,7 +398,7 @@
                         class="btn btn-primary">First</a>
                     <% End if %>
 
-                    <% if pagenumber > 1 then %>
+                    <% if PageNumber > 1 then %>
                     <a href="ViewTransaction.asp?AccTableName=<% response.write(TableName) %>&QsPageNumber=<% response.write(PageNumber-1) %>"
                         class="btn btn-primary">Previous</a>
                     <% else %>
@@ -406,7 +406,7 @@
                         class="btn btn-primary disabled">Previous</a>
                     <% End if %>
 
-                    <% if LastPage > 1 then %>
+                    <% if LastPage > PageNumber then %>
                     <a href="ViewTransaction.asp?AccTableName=<% response.write(TableName) %>&QsPageNumber=<% response.write(PageNumber+1) %>"
                         class="btn btn-primary">Next</a>
                     <% else %>
@@ -414,7 +414,7 @@
                         class="btn btn-primary disabled">Next</a>
                     <% end if %>
 
-                    <% if LastPage >1 then %>
+                    <% if LastPage > PageNumber then %>
                     <a href="ViewTransaction.asp?AccTableName=<% response.write(TableName) %>&QsPageNumber=<% response.write(LastPage) %>"
                         class="btn btn-primary">Last</a>
                     <% else %>
